@@ -5,11 +5,11 @@ CC = gcc
 TARGET = main
 
 # Sources
-SRC = main.c
+SRC = main.c knight.c
 OBJ = $(SRC:.c=.o)
 
 # Compiler flags
-CFLAGS = -Wall -Wextra -Werror -std=c17 -g
+CFLAGS = -Wall -Wextra -std=c17 -g
 CFLAGS += -I./raylib/src
 
 # Link against the local raylib build

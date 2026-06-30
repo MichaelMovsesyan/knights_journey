@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include "knight.h"
 #include "raylib.h"
 
 int main(void) {
