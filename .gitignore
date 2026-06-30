@@ -1,1 +1,31 @@
 raylib/
+# Executables
+main
+*.out
+*.exe
+
+# Object files
+*.o
+*.obj
+
+# Static/Dynamic libraries
+*.a
+*.so
+*.dll
+*.dylib
+
+# Build directories
+build/
+bin/
+
+# Debug files
+*.dSYM/
+*.stackdump
+
+# Editors
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
