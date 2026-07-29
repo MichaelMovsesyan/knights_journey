@@ -22,6 +22,17 @@ typedef struct {
     bool grid[WIDTH][HEIGHT];
 } KnightGrid;
 
+typedef struct {
+    int x, y;
+    int dir;
+} Knight;
+
 KnightGrid init_knight_grid();
+
+Knight init_knight();
+
+void init_grid(KnightGrid* kgrid, Knight* knight);
+
+void draw_knight_grid(KnightGrid* kgrid, int start_x, int start_y);
 
 #endif // KNIGHT_H

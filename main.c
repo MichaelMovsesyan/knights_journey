@@ -3,12 +3,23 @@
 #include "raylib.h"
 
 int main(void) {
-    InitWindow(800, 450, "raylib test");
+
+    InitWindow(SCREEN_WIDTH,SCREEN_HEIGHT, "s");
+
+    KnightGrid kgrid = init_knight_grid();
+    Knight knight = init_knight();
 
     while (!WindowShouldClose()) {
+
         BeginDrawing();
-        ClearBackground(RAYWHITE);
-        DrawText("raylib works!", 190, 200, 20, LIGHTGRAY);
+        ClearBackground(BLACK);
+
+        int start_x = 0;
+        int start_y = 0;
+
+        init_grid(&kgrid, &knight);
+        draw_knight_grid(&kgrid, start_x, start_y);
+        
         EndDrawing();
     }
 
