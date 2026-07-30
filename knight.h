@@ -35,4 +35,10 @@ void init_grid(KnightGrid* kgrid, Knight* knight);
 
 void draw_knight_grid(KnightGrid* kgrid, int start_x, int start_y);
 
+void move(Knight* knight);
+
+void make_move(Knight* knight);
+
+void update_grid(KnightGrid* kgrid, Knight* knight);
+
 #endif // KNIGHT_H
