@@ -82,16 +82,18 @@ void move(Knight* knight) {
     knight->y = (knight->y + HEIGHT) % HEIGHT;
 }
 
-void make_move(Knight* knight) {
+void update_grid(KnightGrid* kgrid, Knight* knight) {
+    int dir = rand() % 8;
+    knight->dir = dir;
 
-    int x = rand() % 8;
-
-    knight->dir = x;
+    int x = knight->x;
+    int y = knight->y;
 
     move(knight);
-}
-
-void update_grid(KnightGrid* kgrid, Knight* knight) {   
-    make_move(knight); 
+    
+    if (kgrid->grid[knight->x][knight->y] == ALIVE) {
+        update_grid(kgrid, knight);
+    }
+    
     kgrid->grid[knight->x][knight->y] = ALIVE;
 }
