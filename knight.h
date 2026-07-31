@@ -2,15 +2,16 @@
 #define KNIGHT_H
 
 #include <stdbool.h>
+#include "raylib.h"
 
 #define ALIVE true
 #define DEAD false
 
-#define WIDTH 75
-#define HEIGHT 75
+#define WIDTH 15
+#define HEIGHT 15
 
-#define CELL_WIDTH 10
-#define CELL_HEIGHT 10
+#define CELL_WIDTH 50
+#define CELL_HEIGHT 50
 
 #define SPACING_X 5
 #define SPACING_Y 5
@@ -33,7 +34,7 @@ Knight init_knight();
 
 void init_grid(KnightGrid* kgrid, Knight* knight);
 
-void draw_knight_grid(KnightGrid* kgrid, int start_x, int start_y);
+void draw_knight_grid(KnightGrid* kgrid, Texture2D ktexture, Rectangle source, int start_x, int start_y);
 
 void move(Knight* knight);
 

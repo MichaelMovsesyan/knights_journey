@@ -10,6 +10,20 @@ int main(void) {
 
   InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "s");
 
+  Texture2D ktexture = LoadTexture("assets/knight.png");
+
+  printf("id=%u width=%d height=%d\n",
+       ktexture.id,
+       ktexture.width,
+       ktexture.height);
+
+  Rectangle source = {
+    0,
+    0,
+    ktexture.width,
+    ktexture.height
+};
+
   KnightGrid kgrid = init_knight_grid();
   Knight knight = init_knight();
 
@@ -26,11 +40,11 @@ int main(void) {
     int start_y = 0;
 
     init_grid(&kgrid, &knight);
-    draw_knight_grid(&kgrid, start_x, start_y);
+    draw_knight_grid(&kgrid, ktexture, source, start_x, start_y);
 
     EndDrawing();
   }
-
+  UnloadTexture(ktexture);
   CloseWindow();
   return 0;
 }
