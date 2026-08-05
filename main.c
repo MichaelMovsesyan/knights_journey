@@ -27,11 +27,32 @@ int main(void) {
   KnightGrid kgrid = init_knight_grid();
   Knight knight = init_knight();
 
-  for (int i = 0; i <= 5; i++) {
-    update_grid(&kgrid, &knight);
-  }
+//   int count = 0;
+//   while (true) {
+//     kgrid = init_knight_grid();
+//     knight = init_knight();
+//   for (int i = 0; i < (WIDTH * HEIGHT); i++) {
+//     update_grid(&kgrid, &knight);
+//   }
+//   printf("I made it %d\n", count++);
+// }
+
+  // for (int i = 0; i <= 5; i++) {
+  //   update_grid(&kgrid, &knight);
+  //   WaitTime(1);
+  // }
+
+  
+  
+  int updates = 0;
+  int max_updates = 25;
 
   while (!WindowShouldClose()) {
+    init_grid(&kgrid, &knight);
+    if (updates < max_updates) {
+      update_grid(&kgrid, &knight);
+      updates++;
+    }
 
     BeginDrawing();
     ClearBackground(BLACK);
@@ -39,8 +60,8 @@ int main(void) {
     int start_x = 0;
     int start_y = 0;
 
-    init_grid(&kgrid, &knight);
     draw_knight_grid(&kgrid, ktexture, source, start_x, start_y);
+    WaitTime(1);
 
     EndDrawing();
   }

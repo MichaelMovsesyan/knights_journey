@@ -24,7 +24,6 @@ Knight init_knight() {
 }
 
 void init_grid(KnightGrid *kgrid, Knight *knight) {
-
   kgrid->grid[knight->x][knight->y] = ALIVE;
 }
 
@@ -37,12 +36,16 @@ void draw_knight_grid(KnightGrid *kgrid, Texture2D ktexture, Rectangle source,
         DrawRectangle(start_x + (CELL_WIDTH + SPACING_X) * i,
                       start_y + (CELL_HEIGHT + SPACING_Y) * j, CELL_WIDTH,
                       CELL_HEIGHT, BLACK);
-      } else {
+      } 
+      else if (kgrid->grid[i][j] == CURRENT) {
         // DrawRectangle(start_x + (CELL_WIDTH + SPACING_X) * i, start_y +
         // (CELL_HEIGHT + SPACING_Y) * j, CELL_WIDTH, CELL_HEIGHT, RAYWHITE);
         Rectangle dest = {start_x + (CELL_WIDTH + SPACING_X) * i, start_y + (CELL_HEIGHT + SPACING_Y) * j, CELL_WIDTH, CELL_HEIGHT};
 
         DrawTexturePro(ktexture, source, dest, (Vector2){0, 0}, 0.0f, WHITE);
+      }
+      else {
+        DrawRectangle(start_x + (CELL_WIDTH + SPACING_X) * i, start_y + (CELL_HEIGHT + SPACING_Y) * j, CELL_WIDTH, CELL_HEIGHT, RAYWHITE);
       }
     }
   }
@@ -87,11 +90,15 @@ void update_grid(KnightGrid *kgrid, Knight *knight) {
   int x = knight->x;
   int y = knight->y;
 
+  kgrid->grid[knight->x][knight->y] = ALIVE;
+
   move(knight);
 
   if (kgrid->grid[knight->x][knight->y] == ALIVE) {
+    knight->x = x;
+    knight->y = y;
     update_grid(kgrid, knight);
   }
 
-  kgrid->grid[knight->x][knight->y] = ALIVE;
+  kgrid->grid[knight->x][knight->y] = CURRENT;
 }

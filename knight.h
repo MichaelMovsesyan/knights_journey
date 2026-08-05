@@ -4,14 +4,14 @@
 #include <stdbool.h>
 #include "raylib.h"
 
-#define ALIVE true
-#define DEAD false
+// #define ALIVE true
+// #define DEAD false
 
-#define WIDTH 15
-#define HEIGHT 15
+#define WIDTH 10
+#define HEIGHT 10
 
-#define CELL_WIDTH 50
-#define CELL_HEIGHT 50
+#define CELL_WIDTH 40
+#define CELL_HEIGHT 40
 
 #define SPACING_X 5
 #define SPACING_Y 5
@@ -19,8 +19,14 @@
 #define SCREEN_WIDTH (CELL_WIDTH + SPACING_X) * WIDTH
 #define SCREEN_HEIGHT  (CELL_HEIGHT + SPACING_Y) * HEIGHT
 
+typedef enum {
+    ALIVE,
+    DEAD,
+    CURRENT
+} Tile;
+
 typedef struct {
-    bool grid[WIDTH][HEIGHT];
+    Tile grid[WIDTH][HEIGHT];
 } KnightGrid;
 
 typedef struct {
