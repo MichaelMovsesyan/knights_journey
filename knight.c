@@ -84,28 +84,28 @@ void move(Knight *knight) {
 }
 
 void update_grid(KnightGrid *kgrid, Knight *knight) {
-  int x = knight->x;
-  int y = knight->y;
+  int paths = 0;
+  kgrid->grid[knight->x][knight->y] = ALIVE;
 
-  kgrid->grid[x][y] = ALIVE;
+  while (paths < 8) {
+    int x = knight->x;
+    int y = knight->y;
+    knight->dir = rand() % 8;
 
-  for (int i = 0; i < 8; i++) {
+    move(knight);
 
-      int dir = rand() % 8;
-      knight->dir = dir;
-
-      move(knight);
-
-      if (kgrid->grid[knight->x][knight->y] == ALIVE) {
-          // Invalid move — go back to original position
-          knight->x = x;
-          knight->y = y;
-      }
-      else {
-          // Valid move — we're done
-          break;
-      }
+    if (kgrid->grid[knight->x][knight->y] == ALIVE) {
+      knight->x = x;
+      knight->y = y;
+      paths++;
+    }
+    else {
+      break;
+    }
   }
 
+  if (paths == 8) {
+      return;
+  }
   kgrid->grid[knight->x][knight->y] = CURRENT;
 }
